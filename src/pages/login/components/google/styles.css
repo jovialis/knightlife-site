@@ -1,0 +1,62 @@
+.component-google {
+    height: 50px;
+    width: 230px;
+
+    background-color: #F7F7F8;
+    
+    border: 1px solid #EFEFF4;
+    border-radius: 5px;
+}
+
+.component-google:hover {
+    border: 1px solid #DCDCE3;
+}
+
+.component-google a {
+    display: block;
+
+    height: 100%;
+    width: 100%;
+    
+    text-decoration: none;
+}
+
+.component-google .google-scaffold {
+    height: 100%;
+    width: 100%;
+    
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.component-google .google-section {
+    height: 100%;
+    
+    margin-left: 20px;
+    
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* Left section
+*************/
+
+.component-google .google-section-left img {
+    max-height: 50%;
+}
+
+/* Right section
+*************/
+
+.component-google .google-section-right span {
+    font-family: sans-serif;
+    font-weight: 500;
+    
+    color: #8E8E9F;
+}

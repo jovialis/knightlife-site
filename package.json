@@ -1,0 +1,28 @@
+{
+    "name": "client",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "react": "latest",
+        "react-dom": "latest",
+        "react-scripts": "latest",
+        "react-router-dom": "latest",
+        "axios": "latest",
+        "feather-icons": "latest",
+        "query-string": "latest",
+        "react-day-picker": "latest"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    },
+    "proxy": "https://dev.dylanhanson.com",
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
+}
