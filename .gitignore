@@ -16,6 +16,13 @@
 .env.test.local
 .env.production.local
 
+# runtime
 npm-debug.log*
+
+# build
 yarn-debug.log*
 yarn-error.log*
+
+# ide
+.idea
+.next

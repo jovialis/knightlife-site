@@ -1,28 +1,41 @@
 {
-    "name": "client",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "react": "latest",
-        "react-dom": "latest",
-        "react-scripts": "latest",
-        "react-router-dom": "latest",
-        "axios": "latest",
-        "feather-icons": "latest",
-        "query-string": "latest",
-        "react-day-picker": "latest"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
-    },
-    "proxy": "https://dev.dylanhanson.com",
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ]
+	"name": "knightlife-site",
+	"version": "1.0.0",
+	"description": "",
+	"private": true,
+	"dependencies": {
+		"react": "^16.8.1",
+		"react-dom": "^16.8.1",
+		"next": "^8.0.0",
+		"express": "^4.16.4",
+		"express-session": "^1.15.6",
+		"body-parser": "^1.18.3",
+		"axios": "^0.18.0",
+		"feather-icons": "^4.17.0",
+		"react-day-picker": "^7.2.4"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.2.2",
+		"@babel/preset-env": "^7.3.1",
+		"html-webpack-plugin": "^3.2.0",
+		"webpack": "^4.29.3",
+		"webpack-dev-server": "^3.1.14"
+	},
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://jovialis@github.com/jovialis/knightlife-site.git"
+	},
+	"keywords": [],
+	"author": "Dylan Hanson",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jovialis/knightlife-site/issues"
+	},
+	"homepage": "https://www.bbnknightlife.com/about",
+	"proxy": "https://api.bbnknightlife.com/"
 }
