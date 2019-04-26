@@ -24,7 +24,7 @@
 	"scripts": {
 		"dev": "next",
 		"build": "next build",
-		"start": "next start -p process.env.PORT"
+		"start": "next start -p $PORT"
 	},
 	"repository": {
 		"type": "git",
