@@ -27,7 +27,7 @@ const DashboardLayout = (props) => (
 			width: 100%;
 			height: ${headerHeight};
 
-			margin-bottom: ${headerMargin};
+			margin-bottom: ${props.headerMargin ? props.headerMargin : headerMargin};
 
 			background-color: #EFEFF4;
 			border-bottom: 1px solid #DCDCE0;

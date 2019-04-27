@@ -1,10 +1,16 @@
 import React from 'react';
-import DayPicker from 'react-day-picker';
+
+import Calendar from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+
+import Feather from 'feather-icons';
 
 import axios from 'axios';
 
 import {default as DashboardLayout, HeaderTitleContent} from '../../layouts/dashboard';
 import Head from "next/head";
+
+import ActionButton from '../../components/actionButton';
 
 export default class PageLunch extends React.Component {
 
@@ -174,64 +180,110 @@ export default class PageLunch extends React.Component {
 
 	render() {
 		return (
-			<DashboardLayout headerContent={(<HeaderTitleContent title="Lunch Menus"/>)}>
+			<DashboardLayout headerContent={(<HeaderTitleContent title="Lunch Menu"/>)} headerMargin={"10px"} >
 				<Head>
 					<title key="title">Dashboard - Lunch</title>
 				</Head>
-				<div id="select-date">
-					<div onClick={event => this.setState({pickerHidden: !(this.state.pickerHidden)})}>
-                        <span>
-                            {
-	                            this.state.selectedDate.toLocaleDateString('en-US')
-                            }
-                        </span>
-					</div>
-					<div>
-						{
-							this.state.pickerHidden ?
-								<span/>
-								:
-								<DayPicker
-									month={this.state.selectedDate}
-									todayButton={'Today'}
-									onDayClick={day => this.setState({selectedDate: day}, async () => this.fetchMenuForSelectedDate())}
-									selectedDays={this.state.selectedDate}
-									onTodayButtonClick={(day, modifiers) => this.setState({selectedDate: day})}
-									style={{'position': 'absolute', left: 0, 'backgroundColor': 'white'}}
-								/>
-						}
-					</div>
-				</div>
-				<button onClick={this.saveChanges}>SAVE</button>
-				<div>
-					<h5>Today Menu</h5>
-					<input type='text' value={this.state.title} onChange={event => this.setState({title: event.target.value})} placeholder='Menu Name'/>
-					<ul>
-						{
-							this.state.current.map(item => <LunchItem item={item} key={item.badge ? item.badge : this.state.current.indexOf(item)} remove={this.removeFoodFromMenu(item)}/>)
-						}
-					</ul>
-				</div>
-				<label>
-					<h4>Add Food</h4>
-					<input type='text' value={this.state.addName} onChange={event => this.setState({addName: event.target.value}, () => this.fetchSuggestedFoods())}
-					       placeholder='Food Name' required/>
-					<br/>
-					<input type='text' value={this.state.addAllergy} onChange={event => this.setState({addAllergy: event.target.value})}
-					       placeholder='Food Allergy' required/>
-					<button onClick={this.appendFoodToMenu}>Add</button>
-					<br/>
-					<div>
-						<h4/>
+				<div id="options">
+					<div id="calendar">
+						<div onClick={event => this.setState({pickerHidden: !(this.state.pickerHidden)})}>
+	                        <span>
+	                            {
+		                            this.state.selectedDate.toLocaleDateString('en-US')
+	                            }
+	                        </span>
+						</div>
 						<div>
 							{
-								this.state.suggested.map(item => <SuggestedLunchItem item={item} key={this.state.suggested.indexOf(item)} add={this.appendSuggestedItemToMenu(item)} hide={this.hideSuggestedItem(item)}/>)
+								this.state.pickerHidden ?
+									<span/>
+									:
+									<Calendar
+										month={this.state.selectedDate}
+										todayButton={'Today'}
+										onDayClick={day => this.setState({selectedDate: day}, async () => this.fetchMenuForSelectedDate())}
+										selectedDays={this.state.selectedDate}
+										onTodayButtonClick={(day, modifiers) => this.setState({selectedDate: day})}
+										style={{'position': 'absolute', left: 0, 'backgroundColor': 'white'}}
+									/>
 							}
 						</div>
 					</div>
-				</label>
+					<ActionButton onClick={ this.saveChanges } title="SAVE"/>
+				</div>
+				<div id="content">
+					<div id="name">
+						<h1>MENU NAME</h1>
+						<input type='text' value={this.state.title} onChange={event => this.setState({title: event.target.value})} placeholder='e.g. Taco Tuesday'/>
+					</div>
+					<div id="foods">
+						<h1>FOODS</h1>
+						<li>
+							<ul>
+								{
+									this.state.current.map(item => <LunchItem item={item} key={item.badge ? item.badge : this.state.current.indexOf(item)} remove={this.removeFoodFromMenu(item)}/>)
+								}
+							</ul>
+						</li>
+					</div>
+				</div>
+				<div id="add">
+					<div>
+						<h1>ADD FOODS</h1>
+						<input type='text' value={this.state.addName} onChange={event => this.setState({addName: event.target.value}, () => this.fetchSuggestedFoods())}
+						       placeholder='Name' required/>
+						<br/>
+						<input type='text' value={this.state.addAllergy} onChange={event => this.setState({addAllergy: event.target.value})}
+						       placeholder='Allergy' required/>
+						<button onClick={this.appendFoodToMenu}>Add to Menu</button>
+						<br/>
+						<div>
+							<div>
+								{
+									this.state.suggested.map(item => <SuggestedLunchItem item={item} key={this.state.suggested.indexOf(item)} add={this.appendSuggestedItemToMenu(item)} hide={this.hideSuggestedItem(item)}/>)
+								}
+							</div>
+						</div>
+					</div>
+				</div>
 				<style jsx>{`
+					h1 {
+						color: #A0A0B2;
+						font-size: 14px;
+						font-weight: 500;
+					}
 
+					#options {
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+					}
+
+					#content {
+						margin-top: 60px;
+					}
+
+					#content #name input {
+						width: calc(100% - 20px);
+
+						font-size: 14px;
+						font-weight: 500;
+
+						background-color: white;
+						border: 1px solid #DCDCE3;
+
+						color: #8C8CA0;
+
+						border-radius: 3px;
+
+						padding: 10px 10px 10px 10px;
+					}
+
+					#content #name input[value=''] {
+					    background-color: #F7F7F8;
+						color: #C5C5D0;
+						font-weight: 400;
+					}
 				`}</style>
 			</DashboardLayout>
 		);
@@ -242,14 +294,58 @@ export default class PageLunch extends React.Component {
 const LunchItem = (props) => (
 
 	<div className="lunch-item">
-		<h6>Name: {props.item.name}</h6>
-		<h6>Allergy: {props.item.allergy}</h6>
-		<br/>
-		<button onClick={props.remove}>Remove from Menu</button>
+		<div id="actions">
+			<button onClick={props.remove}>
+				<div dangerouslySetInnerHTML={{ __html: Feather.icons["trash-2"].toSvg() }}>
+
+				</div>
+			</button>
+		</div>
+		<div id="content">
+			<h6>Name: {props.item.name}</h6>
+			<h6>Allergy: {props.item.allergy}</h6>
+		</div>
 		<style jsx>{`
 			.lunch-item {
 				display: flex;
-				background-color: pink;
+
+				background-color: #F7F7F8;
+				border: 1px solid #DCDCE3;
+
+				border-radius: 3px;
+			}
+
+			.lunch-item #actions {
+				margin-top; 25px;
+
+				width: 50px;
+
+				display: flex;
+				justify-content: flex-start;
+
+				flex-direction: column;
+			}
+
+			.lunch-item #actions button {
+				margin-top: 20px
+
+				padding: 0;
+				border: none;
+
+				background-color: transparent;
+
+				color: #C1C1D3;
+			}
+
+			.lunch-item #actions button:hover {
+				color: #f24848;
+				cursor: pointer;
+			}
+
+			.lunch-item #content {
+				flex-grow: 1;
+
+				width: 50px;
 			}
 		`}</style>
 	</div>
