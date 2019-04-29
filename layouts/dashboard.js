@@ -16,7 +16,6 @@ const DashboardLayout = (props) => (
 			<div id="container">
 				<div className="bumper linerMinWidth">
 					{ props.children }
-					hi
 				</div>
 			</div>
 		</div>
@@ -111,7 +110,9 @@ const HeaderTitleContent = (props) => (
 			position: absolute;
 			bottom: 0;
 
-
+			color: #707083;
+			font-weight: 600;
+			font-size: 22px;
 		}
 		`}</style>
 	</div>

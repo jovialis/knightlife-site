@@ -11,6 +11,7 @@ import {default as DashboardLayout, HeaderTitleContent} from '../../layouts/dash
 import Head from "next/head";
 
 import ActionButton from '../../components/actionButton';
+import DropButton from '../../components/dropButton';
 
 export default class PageLunch extends React.Component {
 
@@ -180,19 +181,13 @@ export default class PageLunch extends React.Component {
 
 	render() {
 		return (
-			<DashboardLayout headerContent={(<HeaderTitleContent title="Lunch Menu"/>)} headerMargin={"10px"} >
+			<DashboardLayout headerContent={(<HeaderTitleContent title="Lunch Menu"/>)} headerMargin={"10px"}>
 				<Head>
 					<title key="title">Dashboard - Lunch</title>
 				</Head>
 				<div id="options">
 					<div id="calendar">
-						<div onClick={event => this.setState({pickerHidden: !(this.state.pickerHidden)})}>
-	                        <span>
-	                            {
-		                            this.state.selectedDate.toLocaleDateString('en-US')
-	                            }
-	                        </span>
-						</div>
+						<DropButton title={this.state.selectedDate.toLocaleDateString('en-US')} icon='calendar' onClick={event => this.setState({pickerHidden: !(this.state.pickerHidden)})}/>
 						<div>
 							{
 								this.state.pickerHidden ?
@@ -209,7 +204,7 @@ export default class PageLunch extends React.Component {
 							}
 						</div>
 					</div>
-					<ActionButton onClick={ this.saveChanges } title="SAVE"/>
+					<ActionButton onClick={this.saveChanges} title="SAVE"/>
 				</div>
 				<div id="content">
 					<div id="name">
@@ -218,13 +213,9 @@ export default class PageLunch extends React.Component {
 					</div>
 					<div id="foods">
 						<h1>FOODS</h1>
-						<li>
-							<ul>
-								{
-									this.state.current.map(item => <LunchItem item={item} key={item.badge ? item.badge : this.state.current.indexOf(item)} remove={this.removeFoodFromMenu(item)}/>)
-								}
-							</ul>
-						</li>
+						{
+							this.state.current.map(item => <LunchItem item={item} key={item.badge ? item.badge : this.state.current.indexOf(item)} remove={this.removeFoodFromMenu(item)}/>)
+						}
 					</div>
 				</div>
 				<div id="add">
@@ -296,7 +287,7 @@ const LunchItem = (props) => (
 	<div className="lunch-item">
 		<div id="actions">
 			<button onClick={props.remove}>
-				<div dangerouslySetInnerHTML={{ __html: Feather.icons["trash-2"].toSvg() }}>
+				<div dangerouslySetInnerHTML={{__html: Feather.icons["trash-2"].toSvg()}}>
 
 				</div>
 			</button>
@@ -325,6 +316,11 @@ const LunchItem = (props) => (
 
 				flex-direction: column;
 			}
+
+			.lunch-item #actions button:first-child {
+				margin-top: 2px;
+			}
+
 
 			.lunch-item #actions button {
 				margin-top: 20px

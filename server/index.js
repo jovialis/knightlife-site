@@ -42,7 +42,7 @@ app.prepare().then(() => {
 		return handle(req, res);
 	});
 
-	server.listen(process.env.PORT || 3000, (err) => {
+	server.listen(process.env.PORT || 2000, (err) => {
 		if (err) throw err;
 		console.log('Ready to receive requests!');
 	});
