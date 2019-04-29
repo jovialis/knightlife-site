@@ -226,7 +226,7 @@ export default class PageLunch extends React.Component {
 						<br/>
 						<input type='text' value={this.state.addAllergy} onChange={event => this.setState({addAllergy: event.target.value})}
 						       placeholder='Allergy' required/>
-						<button onClick={this.appendFoodToMenu}>Add to Menu</button>
+						<DropButton onClick={this.appendFoodToMenu} icon='plus' title='Add to Menu'/>
 						<br/>
 						<div>
 							<div>
@@ -260,7 +260,7 @@ export default class PageLunch extends React.Component {
 						font-size: 14px;
 						font-weight: 500;
 
-						background-color: white;
+						background-color: #F7F7F8;
 						border: 1px solid #DCDCE3;
 
 						color: #8C8CA0;
@@ -271,7 +271,37 @@ export default class PageLunch extends React.Component {
 					}
 
 					#content #name input[value=''] {
-					    background-color: #F7F7F8;
+					    background-color: #ECECF0;
+						color: #C5C5D0;
+						font-weight: 400;
+					}
+
+					#content #name {
+						margin-bottom: 40px;
+					}
+
+					#content {
+						margin-bottom: 40px;
+					}
+
+					#add input {
+						width: calc(100% - 20px);
+
+						font-size: 14px;
+						font-weight: 500;
+
+						background-color: #F7F7F8;
+						border: 1px solid #DCDCE3;
+
+						color: #8C8CA0;
+
+						border-radius: 3px;
+
+						padding: 10px 10px 10px 10px;
+					}
+
+					#add input[value=''] {
+					    background-color: #ECECF0;
 						color: #C5C5D0;
 						font-weight: 400;
 					}
