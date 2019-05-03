@@ -1,29 +1,21 @@
 import Link from 'next/link';
 
 export default (props) => (
-	<div id='navigation' className={ (props.hideBackground ? 'hide-background' : 'show-background') + " " + (props.absolute ? 'absolute-background' : 'relative-background') }>
+	<div id='navigation' className={(props.hideBackground ? 'hide-background' : 'show-background') + " " + (props.absolute ? 'absolute-background' : 'relative-background')}>
 		<div className='section section-left'>
-			<Link href='/'>
-				<a>
-					<img src='/static/img/logo.png' alt='Knight Logo'></img>
-				</a>
-			</Link>
+			<a href='/'>
+				<img src='/static/img/logo.png' alt='Knight Logo'></img>
+			</a>
 		</div>
 		<ul className='section section-right'>
 			<li className='segment'>
-				<Link href='/'>
-					<a>Home</a>
-				</Link>
+				<a href='/'>Home</a>
 			</li>
 			<li className='segment'>
-				<Link href='/contact'>
-					<a>Contact Us</a>
-				</Link>
+				<a href='/contact'>Contact Us</a>
 			</li>
 			<li className='segment'>
-				<Link href='/dashboard'>
-					<a>Dashboard</a>
-				</Link>
+				<a href='/dashboard'>Dashboard</a>
 			</li>
 		</ul>
 		<style jsx>{`
