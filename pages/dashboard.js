@@ -10,10 +10,11 @@ import {default as DashboardLayout, HeaderProfileContent, HeaderTitleContent} fr
 export default class extends React.Component {
 
 	static async getInitialProps({req}) {
-		const user = req.user;
+		const token = req.cookies.get('Session', {signed: true});
+		const {data} = await axios.get(`https://api.bbnknightlife.com/user/about?token=${ token }`);
 
 		return {
-			user: user
+			user: data
 		};
 	}
 
