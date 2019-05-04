@@ -16,7 +16,7 @@ export default class extends React.Component {
 		const {data} = await axios.get(`https://api.bbnknightlife.com/user/about?token=${ token }`);
 
 		return {
-			user: data
+			user: data.user
 		};
 	}
 
