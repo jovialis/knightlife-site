@@ -3,8 +3,7 @@ const { parse } = require('url');
 
 // Validate's the user's Session cookie to ensure they're logged in
 module.exports.requireLogin = (req, res, next) => {
-	// const token = req.cookies.get('Session', {signed: true});
-	const token = 'eb348436-cd74-496e-be6a-f8421ffb3e45';
+	const token = req.cookies.get('Session', {signed: true});
 
 	// Validate the login token with our auth server
 	request({

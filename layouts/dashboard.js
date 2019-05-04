@@ -1,3 +1,5 @@
+import browserCookies from 'browser-cookies';
+
 import Basic from './basic';
 
 const bumperWidth = "70%";
@@ -10,12 +12,12 @@ const DashboardLayout = (props) => (
 		<div id="layout-dashboard" className="layout">
 			<div id="header">
 				<div className="bumper linerMinWidth">
-					{ props.headerContent }
+					{props.headerContent}
 				</div>
 			</div>
 			<div id="container">
 				<div className="bumper linerMinWidth">
-					{ props.children }
+					{props.children}
 				</div>
 			</div>
 		</div>
@@ -36,7 +38,7 @@ const DashboardLayout = (props) => (
 			position: relative;
 			margin: auto;
 
-			width: ${ bumperWidth };
+			width: ${bumperWidth};
 			height: 100%;
 		}
 		`}</style>
@@ -50,13 +52,22 @@ const profileInfoTextSeparation = "2px";
 
 const HeaderProfileContent = (props) => (
 	<div id="layout-header-profile" className="layout">
-		<img id="profile-pic" src={ props.imgUrl }></img>
+		<img id="profile-pic" src={props.imgUrl}/>
 		<div id="profile-info">
-			<div id="name"><span>{ props.name }</span></div>
-			<div id="id"><span>{ props.id }</span></div>
+			<div id="name"><span>{props.name}</span></div>
+			<div id="id"><span>{props.id}</span></div>
 		</div>
 		<div id="profile-actions">
+			<button onClick={e => {
+				e.preventDefault();
 
+				browserCookies.erase('Session');
+				browserCookies.erase('Session.sig');
+
+				window.location.href = 'https://site.bbnknightlife.com/login';
+			}}>
+				LOG OUT
+			</button>
 		</div>
 		<style jsx>{`
 		#profile-pic {
@@ -65,22 +76,22 @@ const HeaderProfileContent = (props) => (
 
 			transform: translateY(40%);
 
-			width: ${ profilePicHeight };
-			height: ${ profilePicHeight };
+			width: ${profilePicHeight};
+			height: ${profilePicHeight};
 
-			border-radius: calc(${ profilePicHeight } / 2);
+			border-radius: calc(${profilePicHeight} / 2);
 			border: 1px solid #DCDCE0;
 		}
 
 		#profile-info {
 			position: absolute;
-			bottom: ${ profileInfoOffsetBottom };
+			bottom: ${profileInfoOffsetBottom};
 
 			left: calc(${profilePicHeight} + ${profileInfoOffsetLeft});
 		}
 
 		#profile-info #name {
-			margin-bottom: ${ profileInfoTextSeparation };
+			margin-bottom: ${profileInfoTextSeparation};
 		}
 
 		#profile-info #name span {
@@ -103,7 +114,7 @@ const HeaderProfileContent = (props) => (
 const HeaderTitleContent = (props) => (
 	<div id="layout-header-title" className="layout">
 		<div id="title">
-			{ props.title }
+			{props.title}
 		</div>
 		<style jsx>{`
 		#title {
@@ -118,4 +129,4 @@ const HeaderTitleContent = (props) => (
 	</div>
 );
 
-export { DashboardLayout as default, HeaderProfileContent, HeaderTitleContent };
+export {DashboardLayout as default, HeaderProfileContent, HeaderTitleContent};

@@ -19,7 +19,7 @@
 		"request-promise-native": "^1.0.7",
 		"cookies": "^0.7.3",
 		"url": "^0.11.0",
-		"cookie-parser": "^1.4.4"
+		"browser-cookies": "^1.2.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
