@@ -4,6 +4,10 @@ const { parse } = require('url');
 // Validate's the user's Session cookie to ensure they're logged in
 module.exports.requireLogin = (req, res, next) => {
 	const token = req.cookies.get('Session', {signed: true});
+	if (!token) {
+		res.redirect('/login');
+		return;
+	}
 
 	// Validate the login token with our auth server
 	request({
@@ -28,7 +32,11 @@ module.exports.requireLogin = (req, res, next) => {
 module.exports.requirePermission = (permission) => {
 	return function requireLogin(req, res, next) {
 		const token = req.cookies.get('Session', {signed: true});
-
+		if (!token) {
+			res.redirect('/login');
+			return;
+		}
+		
 		// Validate the login token with our auth server
 		request({
 			method: 'POST',
