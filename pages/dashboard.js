@@ -10,10 +10,10 @@ import {default as DashboardLayout, HeaderProfileContent, HeaderTitleContent} fr
 export default class extends React.Component {
 
 	static async getInitialProps({req}) {
-		const {data} = await axios.get('https://api.bbnknightlife.com/user/about');
+		const user = req.user;
 
 		return {
-			user: data
+			user: user
 		};
 	}
 

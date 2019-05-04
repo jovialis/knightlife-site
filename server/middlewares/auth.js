@@ -6,8 +6,6 @@ module.exports.requireLogin = (req, res, next) => {
 	// const token = req.cookies.get('Session', {signed: true});
 	const token = 'eb348436-cd74-496e-be6a-f8421ffb3e45';
 
-	console.log('requiring login');
-
 	// Validate the login token with our auth server
 	request({
 		method: 'POST',
@@ -17,7 +15,6 @@ module.exports.requireLogin = (req, res, next) => {
 		},
 		json: true
 	}).then(body => {
-		console.log(body);
 		if (body.valid) {
 			req.user = body.user;
 			next();
