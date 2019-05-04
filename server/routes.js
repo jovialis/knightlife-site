@@ -14,16 +14,12 @@ module.exports.registerRoutes = (router, app, handle) => {
 function passUserToLoginProtectedPage(route, router, app) {
 	router.get(route, auth.requireLogin, (req, res) => {
 		// Pass User data to page as a query object
-		app.render(req, res, route, {
-			user: req.user
-		});
+		app.render(req, res, route, req.query);
 	});
 }
 
 function passUserToPermissionProtectedPage(route, permission, router, app) {
 	router.get(route, auth.requirePermission(permission), (req, res) => {
-		app.render(req, res, route, {
-			user: req.user
-		});
+		app.render(req, res, route, req.query);
 	});
 }
