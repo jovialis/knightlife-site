@@ -5,7 +5,7 @@ const auth = require('./middlewares/auth');
 module.exports.registerRoutes = (router, app, handle) => {
 
 	// Protect route page and pass User
-	passUserToLoginProtectedPage('/dashboard', router, app);
+	// passUserToLoginProtectedPage('/dashboard', router, app);
 
 	passUserToPermissionProtectedPage('/dashboard/lunch', 'lunch', router, app);
 

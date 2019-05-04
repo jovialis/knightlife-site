@@ -13,7 +13,6 @@ export default class extends React.Component {
 		let cookies = new Cookies(req, res, [process.env.COOKIE_SECRET]);
 
 		let token = cookies.get('Session', {signed: true});
-		// token = 'eb348436-cd74-496e-be6a-f8421ffb3e45';
 
 		const userData = (await axios.get(`https://api.bbnknightlife.com/user/about?token=${ token }`)).data;
 		// const {moduleData} = await axios.get(`https://api.bbnknightlife.com/user/modules?token=${ token }`);

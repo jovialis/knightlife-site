@@ -1,5 +1,3 @@
-import browserCookies from 'browser-cookies';
-
 import Basic from './basic';
 
 const bumperWidth = "70%";
@@ -58,16 +56,7 @@ const HeaderProfileContent = (props) => (
 			<div id="id"><span>{props.id}</span></div>
 		</div>
 		<div id="profile-actions">
-			<button onClick={e => {
-				e.preventDefault();
-
-				browserCookies.erase('Session');
-				browserCookies.erase('Session.sig');
-
-				window.location.href = 'https://site.bbnknightlife.com/login';
-			}}>
-				LOG OUT
-			</button>
+			<a href='https://api.bbnknightlife.com/auth/logout'>LOGOUT</a>
 		</div>
 		<style jsx>{`
 		#profile-pic {
