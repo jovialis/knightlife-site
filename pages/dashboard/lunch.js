@@ -10,16 +10,20 @@ import axios from 'axios';
 import {default as DashboardLayout, HeaderTitleContent} from '../../layouts/dashboard';
 import Head from "next/head";
 
+import { requirePermission } from '../../utils/auth';
+
 import ActionButton from '../../components/actionButton';
 import DropButton from '../../components/dropButton';
 
 export default class PageLunch extends React.Component {
 
-	static async getInitialProps({req}) {
-		const date = new Date();
-		const res = await axios.get(`https://api.bbnknightlife.com/d/lunch/menu/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`);
+	static async getInitialProps({req, res}) {
+		const user = requirePermission('lunch', req, res, '/dashboard');
 
-		const lunch = res.data.menu;
+		const date = new Date();
+		const lunchRes = await axios.get(`https://api.bbnknightlife.com/d/lunch/menu/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`);
+
+		const lunch = lunchRes.data.menu;
 
 		const title = lunch.title ? lunch.title : '';
 		const items = lunch.items;
