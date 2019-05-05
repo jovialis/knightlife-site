@@ -1,6 +1,8 @@
 import Router from 'next/router'
 
 import axios from 'axios';
+axios.defaults.withCredentials = true;
+
 import Cookies from "cookies";
 
 export const requireLogin = async (req, res, redirect) => {

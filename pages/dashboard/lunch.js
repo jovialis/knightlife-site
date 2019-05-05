@@ -8,6 +8,7 @@ import 'react-day-picker/lib/style.css';
 import Feather from 'feather-icons';
 
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 import {default as DashboardLayout, HeaderTitleContent} from '../../layouts/dashboard';
 import Head from "next/head";
