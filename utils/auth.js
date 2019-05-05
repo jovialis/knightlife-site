@@ -64,7 +64,7 @@ export const requirePermission = async (permission, req, res, redirect) => {
 			user = res.data.user;
 		} catch (error) {
 			console.log(error);
-			shouldRedirect = true
+			shouldRedirect = true;
 		}
 
 		if (shouldRedirect) {
