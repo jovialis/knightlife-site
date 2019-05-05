@@ -7,7 +7,7 @@ export const requireLogin = async (req, res, redirect) => {
 	let shouldRedirect;
 	let user;
 
-	if (typeof window === 'undefined') {
+	if (req) {
 		// Server side
 		let cookies = new Cookies(req, res, [process.env.COOKIE_SECRET]);
 		let token = cookies.get('Session', {signed: true});
@@ -52,7 +52,7 @@ export const requirePermission = async (permission, req, res, redirect) => {
 	let shouldRedirect;
 	let user;
 
-	if (typeof window === 'undefined') {
+	if (req) {
 		// Server side
 		let cookies = new Cookies(req, res, [process.env.COOKIE_SECRET]);
 		let token = cookies.get('Session', {signed: true});
