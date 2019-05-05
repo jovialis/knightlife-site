@@ -21,15 +21,15 @@ app.prepare().then(() => {
 	// CORS support
 	server.use(cors());
 
-	// Redirect to HTTPS when allowed
-	if (process.env.NODE_ENV === 'production') {
-		server.use(expressSsl.HTTPS({trustProtoHeader: true}));
-	}
-
 	server.all('/api/*', (req, res) => {
 		const url = req.originalUrl;
 		res.redirect(301, `https://old.bbnknightlife.com${ url }`);
 	});
+
+	// Redirect to HTTPS when allowed
+	if (process.env.NODE_ENV === 'production') {
+		server.use(expressSsl.HTTPS({trustProtoHeader: true}));
+	}
 
 	// Default route handler
 	server.get('*', (req, res) => {
