@@ -9,11 +9,19 @@ export const requireLogin = async (req, res, redirect) => {
 
 	if (req) {
 		// Server side
-		let cookies = new Cookies(req, res, [process.env.COOKIE_SECRET]);
-		let token = cookies.get('Session', {signed: true});
+		let cookies = new Cookies(req, res);
+
+		let token = cookies.get('Session');
+		let tokenSig = cookies.get('Session.sig');
 
 		try {
-			const res = await axios.get(`https://api.bbnknightlife.com/auth/validate?token=${token}`);
+			const res = await axios.get(`https://api.bbnknightlife.com/auth/validate`, {
+				headers: {
+					'Session': token,
+					'Session.sig': tokenSig
+				}
+			});
+
 			shouldRedirect = !(res.data && res.data.valid);
 
 			user = res.data.user;
@@ -54,11 +62,19 @@ export const requirePermission = async (permission, req, res, redirect) => {
 
 	if (req) {
 		// Server side
-		let cookies = new Cookies(req, res, [process.env.COOKIE_SECRET]);
-		let token = cookies.get('Session', {signed: true});
+		let cookies = new Cookies(req, res);
+
+		let token = cookies.get('Session');
+		let tokenSig = cookies.get('Session.sig');
 
 		try {
-			const res = await axios.get(`https://api.bbnknightlife.com/auth/validate/permission?token=${token}&permission=${permission}`);
+			const res = await axios.get(`https://api.bbnknightlife.com/auth/validate/permission?permission=${permission}`, {
+				headers: {
+					'Session': token,
+					'Session.sig': tokenSig
+				}
+			});
+
 			shouldRedirect = !(res.data && res.data.valid);
 
 			user = res.data.user;
