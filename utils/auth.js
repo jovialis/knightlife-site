@@ -17,8 +17,8 @@ export const requireLogin = async (req, res, redirect) => {
 		try {
 			const res = await axios.get(`https://api.bbnknightlife.com/auth/validate`, {
 				headers: {
-					'Session': token,
-					'Session.sig': tokenSig
+					'Session': token ? token : '',
+					'Session.sig': tokenSig ? tokenSig : ''
 				}
 			});
 
@@ -70,8 +70,8 @@ export const requirePermission = async (permission, req, res, redirect) => {
 		try {
 			const res = await axios.get(`https://api.bbnknightlife.com/auth/validate/permission?permission=${permission}`, {
 				headers: {
-					'Session': token,
-					'Session.sig': tokenSig
+					'Session': token ? token : '',
+					'Session.sig': tokenSig ? tokenSig : ''
 				}
 			});
 
