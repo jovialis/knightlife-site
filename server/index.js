@@ -26,9 +26,9 @@ app.prepare().then(() => {
 		server.use(expressSsl.HTTPS({trustProtoHeader: true}));
 	}
 
-	server.get('/api/*', (req, res) => {
+	server.all('/api/*', (req, res) => {
 		const url = req.originalUrl;
-		res.redirect(`https://old.bbnknightlife.com${ url }`);
+		res.redirect(301, `https://old.bbnknightlife.com${ url }`);
 	});
 
 	// Default route handler
