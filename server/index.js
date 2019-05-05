@@ -19,12 +19,17 @@ app.prepare().then(() => {
 	server.use(bodyParser.urlencoded({extended: true}));
 
 	// CORS support
-	router.use(cors());
+	server.use(cors());
 
 	// Redirect to HTTPS when allowed
 	if (process.env.NODE_ENV === 'production') {
 		server.use(expressSsl.HTTPS({trustProtoHeader: true}));
 	}
+
+	server.get('/api/*', (req, res) => {
+		const url = req.originalUrl;
+		res.redirect(`https://old.bbnknightlife.com${ url }`);
+	});
 
 	// Default route handler
 	server.get('*', (req, res) => {
