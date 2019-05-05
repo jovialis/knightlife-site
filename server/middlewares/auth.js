@@ -36,7 +36,7 @@ module.exports.requirePermission = (permission) => {
 			res.redirect('/login');
 			return;
 		}
-		
+
 		// Validate the login token with our auth server
 		request({
 			method: 'POST',
