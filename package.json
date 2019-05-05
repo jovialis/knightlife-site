@@ -16,7 +16,6 @@
 		"webpack": "^4.30.0",
 		"cookies": "^0.7.3",
 		"url": "^0.11.0",
-		"express-sslify": "^1.2.0",
 		"cors": "^2.8.5"
 	},
 	"devDependencies": {

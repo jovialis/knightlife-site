@@ -3,7 +3,6 @@ const next = require('next');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const expressSsl = require('express-sslify');
 
 const { parse } = require('url');
 
@@ -25,11 +24,6 @@ app.prepare().then(() => {
 		const url = req.originalUrl;
 		res.redirect(301, `https://old.bbnknightlife.com${ url }`);
 	});
-
-	// Redirect to HTTPS when allowed
-	if (process.env.NODE_ENV === 'production') {
-		server.use(expressSsl.HTTPS({trustProtoHeader: true}));
-	}
 
 	// Default route handler
 	server.get('*', (req, res) => {
