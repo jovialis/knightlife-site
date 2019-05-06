@@ -44,11 +44,11 @@ export default class extends React.Component {
 
 const DashboardModule = (props) => (
 	<div className='module' id={`module-${props.module.id}`}>
-		<a href={ `/dashboard/${ this.props.module.id }` }>
+		<a href={`/dashboard/${props.module.id}`}>
 			<div className='bumper'>
-				<div className='icon-wrapper part' dangerouslySetInnerHTML={{__html: feather.icons[this.props.module.icon].toSvg()}}/>
+				<div className='icon-wrapper part' dangerouslySetInnerHTML={{__html: feather.icons[props.module.icon].toSvg()}}/>
 				<div className='body part'>
-					<span>{ this.props.module.name }</span>
+					<span>{props.module.name}</span>
 				</div>
 			</div>
 		</a>
