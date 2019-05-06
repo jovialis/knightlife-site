@@ -175,7 +175,7 @@ export default class extends React.Component {
 			items: items
 		},{
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/x-www-form-urlencoded'
 			}
 		}).then(async res => {
 			this.setState({
