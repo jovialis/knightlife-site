@@ -173,10 +173,6 @@ export default class extends React.Component {
 			// __v: __v,
 			title: title,
 			items: items
-		},{
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			}
 		}).then(async res => {
 			this.setState({
 				addName: '',
