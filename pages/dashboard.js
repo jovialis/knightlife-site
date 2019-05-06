@@ -34,7 +34,10 @@ export default class extends React.Component {
 					<title key="title">Dashboard</title>
 				</Head>
 				<div id='module-wrapper'> {
-					this.props.modules.map(m => <DashboardModule module={m}/>)
+					this.props.modules.length === 0 ?
+						(<h5>You don't have permission for any modules. Please contact an administrator if you think this is a mistake.</h5>)
+						:
+						(this.props.modules.map(m => <DashboardModule module={m}/>))
 				} </div>
 			</DashboardLayout>
 		);
