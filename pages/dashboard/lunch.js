@@ -28,13 +28,13 @@ export default class extends React.Component {
 
 		const title = lunch.title ? lunch.title : '';
 		const items = lunch.items;
-		const __v = lunch.__v;
+		// const __v = lunch.__v;
 
 		return {
 			date: date,
 			title: title,
 			current: items,
-			__v: __v
+			// __v: __v
 		};
 	}
 
@@ -51,8 +51,8 @@ export default class extends React.Component {
 			suggested: [],
 
 			title: props.title,
-			current: props.current,
-			__v: props.__v
+			current: props.current
+			// __v: props.__v
 		}
 	}
 
@@ -65,12 +65,12 @@ export default class extends React.Component {
 			const title = lunch.title ? lunch.title : '';
 			const items = lunch.items;
 
-			const __v = lunch.__v;
+			// const __v = lunch.__v;
 
 			this.setState({
 				title: title,
-				current: items,
-				__v: __v
+				current: items
+				// __v: __v
 			});
 		});
 	};
@@ -165,12 +165,12 @@ export default class extends React.Component {
 	saveChanges = () => {
 		const date = this.state.selectedDate;
 
-		const __v = this.state.__v;
+		// const __v = this.state.__v;
 		const title = this.state.title;
 		const items = this.state.current;
 
 		axios.post(`https://api.bbnknightlife.com/d/lunch/menu/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/submit`, {
-			__v: __v,
+			// __v: __v,
 			title: title,
 			items: items
 		},{
