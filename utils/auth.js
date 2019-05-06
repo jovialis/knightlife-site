@@ -1,9 +1,29 @@
 import Router from 'next/router'
 
 import axios from 'axios';
+
 axios.defaults.withCredentials = true;
 
 import Cookies from "cookies";
+
+export const authenticationHeaders = async (req) => {
+	if (req) {
+		// Must fetch cookies from user
+		// Server side
+		let cookies = new Cookies(req, res);
+
+		let token = cookies.get('Session');
+		let tokenSig = cookies.get('Session.sig');
+
+		return {
+			'Session': token ? token : '',
+			'Session.sig': tokenSig ? tokenSig : ''
+		};
+	} else {
+		// No Headers needed since User's cookies will be sent automatically
+		return {};
+	}
+};
 
 export const requireLogin = async (req, res, redirect) => {
 	let shouldRedirect;
