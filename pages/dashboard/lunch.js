@@ -169,7 +169,7 @@ export default class extends React.Component {
 		const title = this.state.title;
 		const items = this.state.current;
 
-		axios.post(`https://api.bbnknightlife.com/d/lunch/menu/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`, {
+		axios.post(`https://api.bbnknightlife.com/d/lunch/menu/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/submit`, {
 			__v: __v,
 			title: title,
 			items: items
