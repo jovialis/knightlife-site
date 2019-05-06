@@ -173,6 +173,10 @@ export default class extends React.Component {
 			__v: __v,
 			title: title,
 			items: items
+		},{
+			headers: {
+				'Content-Type': 'application/json'
+			}
 		}).then(async res => {
 			this.setState({
 				addName: '',
