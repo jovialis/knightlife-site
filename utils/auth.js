@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 import Cookies from "cookies";
 
-export const authenticationHeaders = async (req) => {
+export const authenticationHeaders = async (req, res) => {
 	if (req) {
 		// Must fetch cookies from user
 		// Server side

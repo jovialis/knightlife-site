@@ -18,7 +18,7 @@ export default class extends React.Component {
 		const user = await requireLogin(req, res, '/login');
 
 		const modules = (await axios.get('https://api.bbnknightlife.com/d/user/modules', {
-			headers: authenticationHeaders(req)
+			headers: authenticationHeaders(req, res)
 		})).data.modules;
 
 		return {
