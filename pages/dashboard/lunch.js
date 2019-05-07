@@ -51,8 +51,10 @@ export default class extends React.Component {
 			suggested: [],
 
 			title: props.title,
-			current: props.current
-			// __v: props.__v
+			current: props.current,
+			// __v: props.__v,
+
+			changed: false
 		}
 	}
 
@@ -69,8 +71,9 @@ export default class extends React.Component {
 
 			this.setState({
 				title: title,
-				current: items
-				// __v: __v
+				current: items,
+				// __v: __v,
+				changed: false
 			});
 		});
 	};
@@ -82,6 +85,8 @@ export default class extends React.Component {
 		this.setState({
 			addName: '',
 			addAllergy: '',
+
+			changed: true,
 
 			current: [
 				...this.state.current,
@@ -98,6 +103,8 @@ export default class extends React.Component {
 			this.setState({
 				addName: '',
 				addAllergy: '',
+
+				changed: true,
 
 				suggested: [],
 
@@ -122,7 +129,8 @@ export default class extends React.Component {
 			items.splice(index, 1);
 
 			this.setState({
-				current: items
+				current: items,
+				changed: true
 			});
 		};
 	};
@@ -169,6 +177,10 @@ export default class extends React.Component {
 		const title = this.state.title;
 		const items = this.state.current;
 
+		this.setState({
+			changed: false
+		});
+
 		axios.post(`https://api.bbnknightlife.com/d/lunch/menu/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/submit`, {
 			// __v: __v,
 			title: title,
@@ -213,12 +225,12 @@ export default class extends React.Component {
 							}
 						</div>
 					</div>
-					<ActionButton onClick={this.saveChanges} title="SAVE"/>
+					<ActionButton onClick={this.saveChanges} title="SAVE" enabled={this.state.changed}/>
 				</div>
 				<div id="content">
 					<div id="name">
 						<h1>MENU NAME</h1>
-						<input type='text' value={this.state.title} onChange={event => this.setState({title: event.target.value})} placeholder='e.g. Taco Tuesday'/>
+						<input type='text' value={this.state.title} onChange={event => this.setState({title: event.target.value, changed: true})} placeholder='e.g. Taco Tuesday'/>
 					</div>
 					<div id="foods">
 						<h1>FOODS</h1>
