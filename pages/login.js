@@ -1,14 +1,22 @@
 import Head from 'next/head';
 
-import Layout from '../layouts/basic';
+import Splash from '../layouts/splash';
 
 export default () => (
-	<Layout>
+	<Splash clear={true}>
 		<Head>
-			<title>KL Login</title>
+			<title>Login</title>
 		</Head>
-		<GoogleButton href='https://api.bbnknightlife.com/auth/google'/>
-	</Layout>
+		<div className='flex-container'>
+			<h2>Login</h2>
+			<GoogleButton id='google' href='https://api.bbnknightlife.com/auth/google'/>
+		</div>
+		<style jsx>{`
+			h2 {
+				text-align: center;
+			}
+		`}</style>
+	</Splash>
 )
 
 const GoogleButton = (props) => {

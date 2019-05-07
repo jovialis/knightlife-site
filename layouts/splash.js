@@ -10,8 +10,8 @@ export default (props) => (
 			<meta charSet="utf-8" key="meta"/>
 		</Head>
 		<FontPack/>
-		<Navigation id="navigation" hideBackground={true} absolute={true}/>
-		<div id="container">
+		<Navigation id="navigation" hideBackground={!props.clear} absolute={true}/>
+		<div id="container" className={ (props.clear) ? 'background-clear' : 'background-gradient' }>
 			<div id="wrapper">
 				{props.children}
 			</div>
@@ -30,7 +30,9 @@ export default (props) => (
 			#container {
 				width: 100%;
 				height: 100vh;
+			}
 
+			#container.background-gradient {
 				background-color: #4481eb;
 
 				background: rgb(68,129,235);

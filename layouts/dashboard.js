@@ -96,6 +96,12 @@ const HeaderProfileContent = (props) => (
 
 			color: #AEAEC1;
 		}
+
+		#profile-actions {
+			position: absolute;
+			right: 0;
+			bottom: ${ profileInfoOffsetBottom };
+		}
 		`}</style>
 	</div>
 );
@@ -110,9 +116,9 @@ const HeaderTitleContent = (props) => (
 			position: absolute;
 			bottom: 0;
 
-			color: #707083;
+			color: #53535F;
 			font-weight: 600;
-			font-size: 22px;
+			font-size: 32px;
 		}
 		`}</style>
 	</div>

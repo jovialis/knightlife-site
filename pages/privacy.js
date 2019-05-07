@@ -1,11 +1,12 @@
-import Basic from '../layouts/basic';
+import {default as DashboardLayout, HeaderTitleContent} from "../layouts/dashboard";
+import Head from "next/head";
 
 export default () => (
-	<Basic>
-		<div id="bumper" className="linerMinWidth">
-			<h1>Privacy Policy</h1>
-
-
+	<DashboardLayout headerContent={(<HeaderTitleContent title="Privacy"/>)} headerMargin={"10px"}>
+		<Head>
+			<title key="title">Privacy Policy</title>
+		</Head>
+		<div id='content'>
 			<p>Effective date: November 19, 2018</p>
 
 
@@ -154,25 +155,18 @@ export default () => (
 				Privacy Policy on this page.</p>
 			<p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming
 				effective and update the "effective date" at the top of this Privacy Policy.</p>
-			<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy
-				Policy
-				are effective when they are posted on this page.</p>
-
+			<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
 
 			<h2>Contact Us</h2>
 			<p>If you have any questions about this Privacy Policy, please contact us:</p>
 			<ul>
 				<li>By visiting this page on our website: http://www.bbnknightlife.com/contact</li>
-
 			</ul>
 		</div>
 		<style jsx>{`
-		#bumper {
-			position: relative;
-			margin: auto;
-
-			max-width: 70vw;
-		}
+			#content {
+				margin-top: 40px;
+			}
 		`}</style>
-	</Basic>
+	</DashboardLayout>
 );
