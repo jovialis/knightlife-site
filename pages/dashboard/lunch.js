@@ -171,6 +171,11 @@ export default class extends React.Component {
 	};
 
 	saveChanges = () => {
+		// Only save if data has changed
+		if (!this.state.changed) {
+			return;
+		}
+
 		const date = this.state.selectedDate;
 
 		// const __v = this.state.__v;
