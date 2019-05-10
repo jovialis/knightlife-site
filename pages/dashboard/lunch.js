@@ -349,8 +349,14 @@ const LunchItem = (props) => (
 			</button>
 		</div>
 		<div id="content">
-			<h6>Name: {props.item.name}</h6>
-			<h6>Allergy: {props.item.allergy}</h6>
+			<div className='content-element'>
+				<div className='label'><span>NAME</span></div>
+				<div className='text'><span>{ props.item.name }</span></div>
+			</div>
+			<div className='content-element'>
+				<div className='label'><span>ALLERGY</span></div>
+				<div className='text'><span>{ props.item.allergy }</span></div>
+			</div>
 		</div>
 		<style jsx>{`
 			.lunch-item {
@@ -363,7 +369,8 @@ const LunchItem = (props) => (
 			}
 
 			.lunch-item #actions {
-				margin-top; 25px;
+				padding-top; 10px;
+				padding-bottom: 10px;
 
 				width: 50px;
 
@@ -372,11 +379,6 @@ const LunchItem = (props) => (
 
 				flex-direction: column;
 			}
-
-			.lunch-item #actions button:first-child {
-				margin-top: 2px;
-			}
-
 
 			.lunch-item #actions button {
 				margin-top: 20px
@@ -395,9 +397,34 @@ const LunchItem = (props) => (
 			}
 
 			.lunch-item #content {
+				display: flex;
+				flex-direction: column;
+
 				flex-grow: 1;
 
-				width: 50px;
+				padding-right: 20px;
+				padding-top: 10px;
+				padding-top: 10px;
+			}
+
+			.lunch-item #content .content-element {
+				margin-bottom: 10px;
+			}
+
+			.lunch-item #content .content-element:last-child {
+				margin-bottom: 0px;
+			}
+
+			.lunch-item #content .content-element .label spans {
+				font-size: 12px;
+				font-weight: 500;
+				color: #AAAAC4;
+			}
+
+			.lunch-item #content .content-element .text {
+				background-color: #FFFFFF;
+				border: 1px solid #D9D9E0;
+				border-radius: 3px;
 			}
 		`}</style>
 	</div>
