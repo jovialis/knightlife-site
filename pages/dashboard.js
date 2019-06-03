@@ -17,7 +17,7 @@ export default class extends React.Component {
 	static async getInitialProps({req, res}) {
 		const user = await requireLogin(req, res, '/login');
 
-		const modules = (await axios.get('https://api.bbnknightlife.com/d/user/modules', {
+		const modules = (await axios.get('https://api.bbnknightlife.com/d/modules', {
 			headers: authenticationHeaders(req, res)
 		})).data.modules;
 
