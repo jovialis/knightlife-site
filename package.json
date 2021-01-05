@@ -7,7 +7,7 @@
 		"@babel/core": "^7.4.5",
 		"@babel/preset-env": "^7.5.5",
 		"@zeit/next-css": "^1.0.1",
-		"axios": "^0.18.1",
+		"axios": "^0.21.1",
 		"body-parser": "^1.18.3",
 		"cookies": "^0.7.3",
 		"cors": "^2.8.5",
