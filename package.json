@@ -11,7 +11,7 @@
 		"body-parser": "^1.18.3",
 		"cookies": "^0.7.3",
 		"cors": "^2.8.5",
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"express-sslify": "^1.2.0",
 		"feather-icons": "^4.22.1",
 		"next": "^8.0.0",
